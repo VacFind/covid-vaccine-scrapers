@@ -40,10 +40,10 @@ async function execute() {
     const gatherData = async () => {
         const results = await Promise.all(
             scrapers.map((scraper) =>
-                scraper(browser).catch((error) => {
-                    //print out the issue but don't fail, this way we still publish updates
-                    //for other locations even if this website's scrape doesn't work
-                    console.log(error);
+                scraper(browser).catch(async (error) => {
+                    // save the error stack but don't fail, this way we still publish updates
+                    // for other locations even if this website's scrape doesn't work
+                    await s3.saveErrorLog(error.stack);
                     return null;
                 })
             )
