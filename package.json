@@ -23,5 +23,9 @@
     "scripts": {
         "predeploy": "rimraf lambda.zip && npm ci --production && bestzip lambda.zip ./*",
         "test": "mocha"
+    },
+    "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/<YOUR-COLLECTIVE-SLUG>"
     }
 }
